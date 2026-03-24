@@ -101,35 +101,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const baseRotateX = -25;
     const baseRotateY = -35;
     
-    // Set initial 
-    if(cube) {
-        cube.style.transform = `rotateX(${baseRotateX}deg) rotateY(${baseRotateY}deg)`;
+    // Start with idle auto-rotation
+    if (cube) {
+        cube.classList.add('idle-rotate');
     }
     
     if (cube && heroVisual) {
         heroVisual.addEventListener('mousemove', (e) => {
             const rect = heroVisual.getBoundingClientRect();
-            
-            // Calculate mouse position relative to the element (-0.5 to 0.5)
             const x = (e.clientX - rect.left) / rect.width - 0.5;
             const y = (e.clientY - rect.top) / rect.height - 0.5;
             
-            // Add interaction delta
             const tiltX = baseRotateX - (y * 30);
             const tiltY = baseRotateY + (x * 30);
             
-            // Apply transform
             cube.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
         });
         
-        // Reset translation when mouse leaves
-        heroVisual.addEventListener('mouseleave', () => {
-            cube.style.transform = `rotateX(${baseRotateX}deg) rotateY(${baseRotateY}deg)`;
-            cube.style.transition = 'transform 0.5s ease-out';
+        // When mouse enters: stop idle animation, switch to interactive
+        heroVisual.addEventListener('mouseenter', () => {
+            cube.classList.remove('idle-rotate');
+            cube.style.animation = 'none';
+            cube.style.transition = 'none';
         });
         
-        heroVisual.addEventListener('mouseenter', () => {
-            cube.style.transition = 'none';
+        // When mouse leaves: smoothly return then resume idle
+        heroVisual.addEventListener('mouseleave', () => {
+            cube.style.transition = 'transform 0.8s ease-out';
+            cube.style.transform = `rotateX(${baseRotateX}deg) rotateY(${baseRotateY}deg)`;
+            // Resume idle after transition completes
+            setTimeout(() => {
+                cube.style.transition = '';
+                cube.style.transform = '';
+                cube.style.animation = '';
+                cube.classList.add('idle-rotate');
+            }, 900);
         });
     }
 
@@ -147,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeElement.textContent = `${hours}:${minutes}:${seconds}`;
         
         if (dateElement) {
-            const days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+            const days = ['\u0412\u0421', '\u041f\u041d', '\u0412\u0422', '\u0421\u0420', '\u0427\u0422', '\u041f\u0422', '\u0421\u0411'];
             const day = days[now.getDay()];
             const date = String(now.getDate()).padStart(2, '0');
             const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -165,33 +171,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const timelineSteps = document.querySelectorAll('.timeline-step');
 
     if (processSection && glowLine && timelineSteps.length > 0) {
-        // Calculate scroll progress specifically within the process section
         const handleScroll = () => {
             const sectionRect = processSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             
-            // Start animation when section enters viewport
-            // End when section leaves viewport
-            
-            // Adjust to get a nice progress curve where 0% is top of timeline container in middle of screen 
-            // and 100% is bottom of timeline container in middle of screen
             const containerRect = document.querySelector('.timeline-container').getBoundingClientRect();
             
             const totalTravel = containerRect.height;
             const currentTravel = (windowHeight / 2) - containerRect.top;
             
             let progress = (currentTravel / totalTravel) * 100;
-            progress = Math.max(0, Math.min(progress, 100)); // clamp between 0 and 100
+            progress = Math.max(0, Math.min(progress, 100));
             
             glowLine.style.height = `${progress}%`;
 
-            // Check which nodes should be lit up based on the line position
             timelineSteps.forEach((step) => {
                 const nodeRect = step.querySelector('.tl-node').getBoundingClientRect();
                 const nodeCenter = nodeRect.top + nodeRect.height / 2;
                 
-                // If the glowing line has reached or passed this node's center
-                // which is currently somewhere roughly below the window center
                 if ((windowHeight / 2) > nodeCenter) {
                     step.classList.add('active');
                 } else {
@@ -201,7 +198,45 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        // Initial call
         handleScroll();
     }
+
+    // ==================== SCROLL REVEAL (IntersectionObserver) ====================
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+    // Auto-stagger grid children (problem cards, bento cards)
+    document.querySelectorAll('.problems-grid, .bento-grid').forEach(grid => {
+        Array.from(grid.children).forEach((child, i) => {
+            if (!child.classList.contains('reveal')) {
+                child.classList.add('reveal');
+            }
+            child.classList.add(`reveal-delay-${Math.min(i + 1, 6)}`);
+            
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+            obs.observe(child);
+        });
+    });
 });
