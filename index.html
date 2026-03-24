@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Умная автоматизация рутины | Интеграции n8n</title>
+    <meta name="description" content="Избавьте команду от копирования данных и разбора спама. Настраиваем надежные связки между вашей почтой, CRM и маркетплейсами.">
+    
+    <!-- Open Graph / Social media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Умная автоматизация рутины | Automator">
+    <meta property="og:description" content="Избавьте команду от копирования данных и разбора спама. n8n интеграции для вашего бизнеса.">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Favicon (inline SVG) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><path d='M12 2L2 7L12 12L22 7L12 2Z'/><path d='M2 17L12 22L22 17'/><path d='M2 12L12 17L22 12'/></svg>" type="image/svg+xml">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <noscript>
+        <div style="background:#111;color:#fff;text-align:center;padding:24px;font-family:sans-serif;">
+            Для корректной работы сайта необходимо включить JavaScript.
+        </div>
+    </noscript>
+    <div class="radial-glow glow-top"></div>
+    
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="header-left">
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Automator</span>
+                </div>
+                <nav class="header-nav">
+                    <a href="#problems">Проблемы</a>
+                    <a href="#all-services">Услуги</a>
+                    <a href="#portfolio">Кейсы</a>
+                    <a href="#contact">Контакт</a>
+                </nav>
+            </div>
+            
+            <div class="header-clock">
+                <div class="clock-days" id="clock-date">ПН-ВС 09-22</div>
+                <div class="clock-time" id="clock-time">00:00:00</div>
+            </div>
+
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-primary" style="padding: 10px 24px; font-weight: 600;">Автоматизировать</a>
+            </div>
+        </div>
+    </header>
+    <!-- ==================== END HEADER ==================== -->
+
+    <main>
+        <!-- ==================== SECTION 1: HERO ==================== -->
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Умная<br>автоматизация<br>рутины.</h1>
+                    <p class="hero-subtitle">
+                        Избавьте команду от копирования данных и разбора спама. Настраиваем надежные связки между вашей почтой, CRM и маркетплейсами. Вы фокусируетесь на росте, алгоритмы делают всё остальное.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Обсудить задачу</a>
+                        <a href="#services" class="btn btn-secondary">Смотреть услуги</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual tilt-effect">
+                    <div class="cube-wrapper">
+                        <div class="cube" id="rubiks-cube">
+                            <!-- Cubies will be injected by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2: SOCIAL PROOF ==================== -->
+        <section class="social-proof">
+            <div class="container">
+                <p class="social-proof-text">Интегрируем инструменты, которые вы уже используете каждый день</p>
+                <div class="logos-grid">
+                    <div class="logo-item">
+                        <img src="https://cdn.simpleicons.org/telegram/888888" alt="Telegram" loading="lazy" width="24" height="24">
+                        <span>Telegram</span>
+                    </div>
+                    <div class="logo-item text-logo">
+                        <span>Bitrix24</span>
+                    </div>
+                    <div class="logo-item text-logo">
+                        <span>Ozon</span>
+                    </div>
+                    <div class="logo-item text-logo">
+                        <span>WB</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.simpleicons.org/gmail/888888" alt="Gmail" loading="lazy" width="24" height="24">
+                        <span>Gmail</span>
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://cdn.simpleicons.org/maildotru/888888" alt="Mail.ru" loading="lazy" width="24" height="24">
+                        <span>Mail</span>
+                    </div>
+                    <div class="logo-item text-logo">
+                        <span>Yandex</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-gradient-line"></div>
+        </section>
+
+        <!-- ==================== SECTION 3: PROBLEMS ==================== -->
+        <section id="problems" class="problems">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Скрытая стоимость ручных процессов</h2>
+                    <p>Пока конкуренты автоматизируют бизнес, ваша команда теряет время, лиды и прибыль на повторяющихся задачах.</p>
+                </div>
+                
+                <div class="problems-grid">
+                    <!-- Card 1 -->
+                    <div class="problem-card">
+                        <div class="card-visual">
+                            <div class="vis-abstract-inbox">
+                                <div class="vis-bar"></div>
+                                <div class="vis-bar"></div>
+                                <div class="vis-bar vis-bar-error"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Потерянные лиды в почте</h3>
+                            <p>Важные запросы клиентов теряются в спаме. Пока менеджер найдет письмо, лид уже остынет.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="problem-card">
+                        <div class="card-visual">
+                            <div class="vis-abstract-radar">
+                                <div class="vis-radar-circle"></div>
+                                <div class="vis-radar-target"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Падение рейтинга</h3>
+                            <p>Долгие ответы на отзывы и вопросы на маркетплейсах убивают лояльность и снижают охваты.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="problem-card">
+                        <div class="card-visual">
+                            <div class="vis-abstract-slider">
+                                <div class="vis-slider-track"></div>
+                                <div class="vis-slider-thumb"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Выгорание менеджеров</h3>
+                            <p>Часы уходят на ответы на одни и те же вопросы в Telegram вместо закрытия крупных сделок.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 4 -->
+                    <div class="problem-card">
+                        <div class="card-visual">
+                            <div class="vis-abstract-blocks">
+                                <div class="vis-block"></div>
+                                <div class="vis-block vis-block-error"></div>
+                                <div class="vis-block"></div>
+                                <div class="vis-block"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Ошибки ручного ввода</h3>
+                            <p>Копирование данных из чатов в CRM неизбежно ведет к опечаткам, дублям и забытым контактам.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="problem-card">
+                        <div class="card-visual">
+                            <div class="vis-abstract-nodes">
+                                <div class="vis-node"></div>
+                                <svg class="vis-dashed-line" viewBox="0 0 100 20"><path d="M0 10 L45 10 M55 10 L100 10" stroke="#f74d6c" stroke-width="2" stroke-dasharray="4" fill="none"/></svg>
+                                <div class="vis-node vis-node-error"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Зоопарк сервисов</h3>
+                            <p>Почта, CRM и маркетплейсы живут отдельно. Сотрудникам приходится вручную переносить данные между ними каждый день.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="problem-card">
+                        <div class="card-visual">
+                            <div class="vis-abstract-chart">
+                                <div class="vis-col"></div><div class="vis-col"></div><div class="vis-col vis-col-high"></div><div class="vis-col vis-col-error"></div><div class="vis-col vis-col-high"></div><div class="vis-col"></div><div class="vis-col"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Медленные ответы</h3>
+                            <p>Без автоответов клиенты ждут реакцию часами. В e-commerce медленная поддержка означает потерянные продажи.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 4: SOLUTIONS / ECOSYSTEM ==================== -->
+        <section id="solutions" class="solutions">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Центральная нервная система вашего бизнеса</h2>
+                    <p>Мы объединяем разрозненные инструменты в единую автоматизированную экосистему.</p>
+                </div>
+                
+                <div class="hub-container">
+                    <div class="hub-crosshair vertical"></div>
+                    <div class="hub-crosshair horizontal"></div>
+                    
+                    <div class="hub-data-flow flow-top-left"></div>
+                    <div class="hub-data-flow flow-top-right"></div>
+                    <div class="hub-data-flow flow-bottom-left"></div>
+                    <div class="hub-data-flow flow-bottom-right"></div>
+
+                    <!-- Center Hub -->
+                    <div class="hub-center">
+                        <div class="hub-pulse"></div>
+                        <div class="hub-core">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- 4 Nodes -->
+                    <!-- Top Left -->
+                    <div class="hub-node node-tl">
+                        <div class="node-icon-box">
+                            <svg class="float-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                        </div>
+                        <div class="node-content">
+                            <h3>Умная воронка лидов</h3>
+                            <p>Заявки с почты и сайта мгновенно попадают в Битрикс24.</p>
+                        </div>
+                    </div>
+
+                    <!-- Top Right -->
+                    <div class="hub-node node-tr">
+                        <div class="node-icon-box">
+                            <svg class="float-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1 3-6z"/></svg>
+                        </div>
+                        <div class="node-content">
+                            <h3>Маркетплейс-Автопилот</h3>
+                            <p>ИИ автоматически обрабатывает отзывы и вопросы на Ozon/WB 24/7.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Left -->
+                    <div class="hub-node node-bl">
+                        <div class="node-icon-box">
+                            <svg class="float-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </div>
+                        <div class="node-content">
+                            <h3>ИИ Поддержка в Telegram</h3>
+                            <p>Умный бот мгновенно решает 80% рутинных вопросов клиентов.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Right -->
+                    <div class="hub-node node-br">
+                        <div class="node-icon-box">
+                            <svg class="float-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                        </div>
+                        <div class="node-content">
+                            <h3>Ежедневные дашборды</h3>
+                            <p>Автоматическая бизнес-аналитика отправляется прямо на ваш телефон каждое утро.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 5: SERVICES (BENTO GRID) ==================== -->
+        <section id="all-services" class="all-services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Больше, чем автоматизация: Full-Stack цифровые решения</h2>
+                    <p>От умных рабочих процессов до нативных Telegram-приложений — мы создаем цифровую инфраструктуру, которая нужна вашему бизнесу.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Card 1: 2x2 -->
+                    <div class="bento-card bento-large">
+                        <div class="bento-visual">
+                            <div class="vis-n8n-canvas">
+                                <div class="canvas-node" style="top: 20%; left: 10%;"></div>
+                                <div class="canvas-node" style="top: 50%; left: 30%;"></div>
+                                <div class="canvas-node" style="top: 20%; left: 70%;"></div>
+                                <div class="canvas-node" style="top: 70%; left: 80%;"></div>
+                                <svg class="canvas-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                    <path d="M15,25 Q25,25 30,50 T35,55" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="2" />
+                                    <path d="M35,55 Q50,40 70,25" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="2" />
+                                    <path d="M35,55 Q50,70 80,75" fill="none" stroke="#fff" stroke-width="0.5" stroke-dasharray="2" />
+                                    <!-- Animated Pulses -->
+                                    <circle cx="0" cy="0" r="1.5" fill="#f74d6c"><animateMotion path="M15,25 Q25,25 30,50 T35,55" dur="2s" repeatCount="indefinite" /></circle>
+                                    <circle cx="0" cy="0" r="1.5" fill="#f74d6c"><animateMotion path="M35,55 Q50,40 70,25" dur="3s" repeatCount="indefinite" begin="1s"/></circle>
+                                    <circle cx="0" cy="0" r="1.5" fill="#f74d6c"><animateMotion path="M35,55 Q50,70 80,75" dur="2.5s" repeatCount="indefinite" begin="0.5s"/></circle>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="bento-content">
+                            <h3>Масштабная автоматизация (n8n и ИИ)</h3>
+                            <p>Ядро нашей экспертизы. Мы связываем и автоматизируем вашу бизнес-логику, превращая часы рутинной работы в незаметные фоновые процессы.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Wide 2x1 -->
+                    <div class="bento-card bento-wide">
+                        <div class="bento-visual">
+                            <div class="vis-wireframe">
+                                <div class="wire-header"></div>
+                                <div class="wire-hero"><div class="wire-title"></div><div class="wire-btn"></div></div>
+                                <div class="wire-grid"><div class="wire-box"></div><div class="wire-box"></div><div class="wire-box"></div></div>
+                            </div>
+                        </div>
+                        <div class="bento-content">
+                            <h3>Высококонверсионные сайты</h3>
+                            <p>Премиальные лендинги и сайты в темной теме, созданные превращать посетителей в лидов.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Tall 1x2 -->
+                    <div class="bento-card bento-tall">
+                        <div class="bento-visual">
+                            <div class="vis-phone">
+                                <div class="phone-screen">
+                                    <div class="phone-app-header"></div>
+                                    <div class="phone-app-bubble"></div>
+                                    <div class="phone-app-bubble right"></div>
+                                    <div class="phone-app-panel"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bento-content">
+                            <h3>Telegram Mini-Apps</h3>
+                            <p>Custom WebApp внутри Telegram. Нативный опыт без ухода из приложения.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Small 1x1 -->
+                    <div class="bento-card bento-small">
+                        <div class="bento-visual">
+                            <div class="vis-paywall">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <div class="vis-glow-ring"></div>
+                            </div>
+                        </div>
+                        <div class="bento-content">
+                            <h3>Закрытые клубы</h3>
+                            <p>Автоматизация подписок и приема платежей.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Small 1x1 -->
+                    <div class="bento-card bento-small">
+                        <div class="bento-visual">
+                            <div class="vis-nfc">
+                                <div class="nfc-card"></div>
+                                <div class="nfc-wave wave-1"></div>
+                                <div class="nfc-wave wave-2"></div>
+                            </div>
+                        </div>
+                        <div class="bento-content">
+                            <h3>NFC-визитки</h3>
+                            <p>Электронные визитки для безупречного нетворкинга.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Medium 2x1 -->
+                    <div class="bento-card bento-medium">
+                        <div class="bento-visual">
+                            <div class="vis-sync">
+                                <div class="sync-db"></div>
+                                <svg width="40" height="20" viewBox="0 0 40 20" fill="none"><path d="M0 10 L40 10" stroke="#f74d6c" stroke-dasharray="4" stroke-width="2" class="sync-arrows"/></svg>
+                                <div class="sync-db"></div>
+                            </div>
+                        </div>
+                        <div class="bento-content">
+                            <h3>ИИ-интеграции с CRM</h3>
+                            <p>Глубокая двусторонняя синхронизация между почтой, мессенджерами и Битрикс24.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 6: PROCESS / TIMELINE ==================== -->
+        <section id="process" class="process-timeline">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Путь к автоматизации</h2>
+                    <p>Понятный и предсказуемый путь от хаоса к полному операционному дзену.</p>
+                </div>
+
+                <div class="timeline-container">
+                    <!-- Center Background Line -->
+                    <div class="timeline-line"></div>
+                    <!-- Animated Glowing Line (handled by JS) -->
+                    <div class="timeline-glow-line" id="tl-progress"></div>
+
+                    <!-- Step 1 -->
+                    <div class="timeline-step step-1" data-step="1">
+                        <div class="tl-content tl-text-block text-right">
+                            <h3>1. Аудит</h3>
+                            <p>Мы описываем ваши текущие процессы. Ни одна точка трения или источник хаоса в вашем рабочем пространстве не останется незамеченным.</p>
+                        </div>
+                        <div class="tl-node-container">
+                            <div class="tl-node">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </div>
+                        </div>
+                        <div class="tl-content tl-glass-block">
+                            <ul class="tl-details text-left">
+                                <li>Поиск узких мест</li>
+                                <li>Оценка потерь ресурсов</li>
+                                <li>Анализ совместимости инструментов</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-step step-2" data-step="2">
+                        <div class="tl-content tl-glass-block right-align-glass">
+                            <ul class="tl-details text-right">
+                                <li>Масштабируемая архитектура</li>
+                                <li>Проектирование пути пользователя</li>
+                                <li>Карта операционных KPI</li>
+                            </ul>
+                        </div>
+                        <div class="tl-node-container">
+                            <div class="tl-node">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            </div>
+                        </div>
+                        <div class="tl-content tl-text-block text-left">
+                            <h3>2. Генеральный план</h3>
+                            <p>Визуализируем архитектуру. Мы создаем цифровой чертеж, который идеально балансирует машинную эффективность с человеческой интуицией.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-step step-3" data-step="3">
+                        <div class="tl-content tl-text-block text-right">
+                            <h3>3. Внедрение</h3>
+                            <p>Мы разворачиваем логические движки, настраиваем процессы в n8n и бесшовно соединяем ваши программные узлы в единую надежную сеть.</p>
+                        </div>
+                        <div class="tl-node-container">
+                            <div class="tl-node">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                            </div>
+                        </div>
+                        <div class="tl-content tl-glass-block">
+                            <ul class="tl-details text-left">
+                                <li>Многоуровневая API-интеграция</li>
+                                <li>Установка триггеров логики</li>
+                                <li>Проверки целостности данных</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-step step-4" data-step="4">
+                        <div class="tl-content tl-glass-block right-align-glass">
+                            <ul class="tl-details text-right">
+                                <li>Непрерывная оптимизация</li>
+                                <li>Мониторинг процессов</li>
+                                <li>План стратегического масштабирования</li>
+                            </ul>
+                        </div>
+                        <div class="tl-node-container">
+                            <div class="tl-node">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                            </div>
+                        </div>
+                        <div class="tl-content tl-text-block text-left">
+                            <h3>4. Дзен</h3>
+                            <p>Пиковая операционная ясность. Автоматизация работает как тихая, невидимая сила, позволяя вам сфокусироваться исключительно на высокоуровневой стратегии.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 7: PORTFOLIO / CASE STUDIES ==================== -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Трансформация в действии</h2>
+                    <p>Реальные примеры того, как мы превращаем операционный хаос в спокойный автоматизированный поток.</p>
+                </div>
+
+                <div class="portfolio-list">
+                    <!-- Card 1 -->
+                    <div class="case-card">
+                        <div class="case-content">
+                            <h3>Автоматизация отзывов и Q&A на маркетплейсах</h3>
+                            <p>Внедрили умного ИИ-агента для автоматического разбора, категоризации и ответов на отзывы и вопросы клиентов на ведущих маркетплейсах.</p>
+                            <div class="case-metrics">
+                                <div class="metric">
+                                    <h4>40ч</h4>
+                                    <span>Сэкономлено в неделю</span>
+                                </div>
+                                <div class="metric">
+                                    <h4>100%</h4>
+                                    <span>Скорость ответа</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-image-container blend-left">
+                            <div class="schema-container">
+                                <div class="s-line h-line pulse-h" style="left: 20%; right: 50%; top: 30%;"></div>
+                                <div class="s-line h-line pulse-h" style="left: 20%; right: 50%; top: 70%;"></div>
+                                <div class="s-line v-line pulse-v" style="left: 50%; top: 30%; height: 20%;"></div>
+                                <div class="s-line v-line pulse-v-rev" style="left: 50%; top: 50%; height: 20%;"></div>
+                                <div class="s-line h-line pulse-h" style="left: 50%; right: 20%; top: 50%;"></div>
+                                <div class="s-node" style="left: 20%; top: 30%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> 
+                                    Отзывы
+                                </div>
+                                <div class="s-node" style="left: 20%; top: 70%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                    Вопросы
+                                </div>
+                                <div class="s-node s-accent" style="left: 50%; top: 50%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                    AI Агент
+                                </div>
+                                <div class="s-node" style="left: 80%; top: 50%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Отвечено
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 (Reversed) -->
+                    <div class="case-card reversed">
+                        <div class="case-image-container blend-right">
+                            <div class="schema-container">
+                                <div class="s-line h-line pulse-h" style="left: 20%; right: 50%; top: 50%;"></div>
+                                <div class="s-line v-line pulse-v-rev" style="left: 50%; top: 25%; height: 25%;"></div>
+                                <div class="s-line h-line pulse-h red" style="left: 50%; right: 15%; top: 25%;"></div>
+                                <div class="s-line v-line pulse-v green" style="left: 50%; top: 50%; height: 25%;"></div>
+                                <div class="s-line h-line pulse-h green" style="left: 50%; right: 15%; top: 75%;"></div>
+                            
+                                <div class="s-node" style="left: 20%; top: 50%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                    Входящие
+                                </div>
+                                <div class="s-node s-accent" style="left: 50%; top: 50%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                    n8n Маршрутизатор
+                                </div>
+                                <div class="s-node s-red" style="left: 85%; top: 25%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                    Спам
+                                </div>
+                                <div class="s-node s-green" style="left: 85%; top: 75%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    Bitrix24
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-content">
+                            <h3>Умная маршрутизация Email в Битрикс24</h3>
+                            <p>Настроили продвинутый n8n процесс, работающий как привратник. Анализирует входящие письма, удаляет спам и автоматически создает структурированные лиды в Битрикс24 из реальных запросов.</p>
+                            <div class="case-metrics">
+                                <div class="metric">
+                                    <h4>99%</h4>
+                                    <span>Спама отфильтровано</span>
+                                </div>
+                                <div class="metric">
+                                    <h4>Мгновенно</h4>
+                                    <span>Создание лида</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="case-card">
+                        <div class="case-content">
+                            <h3>В2В-сайт для агентства автоматизации</h3>
+                            <p>Разработали высококонверсионный сайт в темной теме, разработанный специально для продажи услуг автоматизации. Бесшовная интеграция форм захвата лидов напрямую в CRM.</p>
+                            <div class="case-metrics">
+                                <div class="metric">
+                                    <h4>2x</h4>
+                                    <span>Рост конверсии</span>
+                                </div>
+                                <div class="metric">
+                                    <h4>0</h4>
+                                    <span>Потерянных лидов</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="case-image-container blend-left">
+                            <div class="schema-container">
+                                <div class="s-line h-line pulse-h" style="left: 15%; right: 55%; top: 50%;"></div>
+                                <div class="s-line h-line pulse-h green" style="left: 45%; right: 15%; top: 50%;"></div>
+                                
+                                <div class="s-node" style="left: 15%; top: 50%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    Трафик
+                                </div>
+                                
+                                <div class="s-wireframe" style="left: 45%; top: 50%;">
+                                    <div class="wf-header"></div>
+                                    <div class="wf-hero">
+                                        <span style="display:block; margin: 12px 0 0 10px; font-size: 8px; color: #f74d6c; letter-spacing: 0.1em; font-weight: bold;">[ FORM ]</span>
+                                    </div>
+                                    <div class="wf-body">
+                                        <div class="wf-col"></div>
+                                        <div class="wf-col"></div>
+                                    </div>
+                                </div>
+                            
+                                <div class="s-node s-green" style="left: 85%; top: 50%;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Успех / CRM
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 8: CONTACT & CTA ==================== -->
+        <section id="contact" class="contact-section">
+            <div class="container contact-container">
+                <div class="section-header text-center">
+                    <span class="muted-overhead">НАЧНИТЕ ПУТЕШЕСТВИЕ</span>
+                    <h2>Успокойте Шум,<br>Овладейте Потоком.</h2>
+                    <p class="subtitle-narrow">Каждая автоматизация начинается с одного наблюдения. Поделитесь своим операционным бременем, и мы спроектируем его цифровое решение.</p>
+                </div>
+
+                <div class="form-wrapper">
+                    <form id="lead-form" class="minimal-form" action="#" method="POST">
+                        <!-- Honeypot анти-спам поле -->
+                        <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="input-group">
+                            <label for="name">ВАШЕ ИМЯ</label>
+                            <input type="text" id="name" placeholder="Укажите ваше имя" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="challenge">ВЫЗОВ</label>
+                            <textarea id="challenge" placeholder="Опишите процесс, который вызывает сопротивление..." required minlength="10"></textarea>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="contact-info">TELEGRAM, ТЕЛЕФОН ИЛИ СОЦ.СЕТЬ <span class="muted-note">(Выберите одно)</span></label>
+                            <input type="text" id="contact-info" placeholder="@username, +1..., или https://..." required>
+                        </div>
+
+                        <div class="form-submit-wrapper">
+                            <button type="submit" class="circular-btn">
+                                <span class="btn-text">Начать</span>
+                                <span class="btn-arrow">→</span>
+                            </button>
+                            <span class="trust-note">НАЖМИТЕ, ЧТОБЫ ДОВЕРИТЬСЯ ПОТОКУ</span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="direct-contacts">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </div>
+                        <h5>МГНОВЕННАЯ СИНХРОНИЗАЦИЯ</h5>
+                        <p>@telegram_handle</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <h5>ФИЛОСОФИЯ И ЗАПРОСЫ</h5>
+                        <p>hello@domain.com</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-6"></path><path d="M12 16a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v6a4 4 0 0 0 4 4z"></path><line x1="8" y1="11" x2="6" y2="9"></line><line x1="16" y1="11" x2="18" y2="9"></line></svg>
+                        </div>
+                        <h5>ПРИСУТСТВИЕ</h5>
+                        <p>Основано в Цифровом Саду Дзен</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
